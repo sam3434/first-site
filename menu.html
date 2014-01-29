@@ -1,0 +1,98 @@
+<?php 
+	require_once "stats.php";
+ ?>
+
+
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$('.amulti').mouseover(function(event) {
+					$(this).parent().children('.submenu').css('visibility', 'visible');
+				});
+
+				$('.amulti').parent().children('.submenu').mouseover(function(event) {
+					$(this).css('visibility', 'visible');
+				});
+
+				$('.amulti').mouseout(function(event) {
+					$(this).parent().children('.submenu').css('visibility', 'hidden');
+				});
+
+				$('.amulti').parent().children('.submenu').mouseout(function(event) {
+					$(this).css('visibility', 'hidden');
+				});
+				
+				$('.submenu').each(function(event) {
+					var coords=$(this).parent().offset();
+					$(this).offset({top:coords.top,left:coords.left+220});
+				});
+
+				$('.amulti').append("<img src='icons/arrow_right2.png' style='float:right; border:0;'>");
+			});
+		</script>	
+		<div>
+			<a href="index.php" onMouseOver="window.status='Главная страница сайта'" id="index_link">Главная страница</a>
+		</div>
+		<div>
+            <a href="about.php" onMouseOver="window.status='Краткая автобиография'" id="about_link">Обо мне</a>
+		</div>
+		<div>
+            <a href="interests.php" onMouseOver="window.status='То, что мне интересно'" id="interests_link">Мои интересы</a>
+		</div>
+		<div>
+            <a href="learn.php" onMouseOver="window.status='Список предметов'" id="learn_link">Учеба</a>
+		</div>
+		<?php 
+			if (is_autho()) {
+				$s=<<<__wr
+				<div>
+            <a href="results.php" onMouseOver="window.status='Результаты тестирования'" id="results_link">Результаты</a>
+		</div>
+__wr;
+			echo "$s";
+			}
+		 ?>
+		<!-- <div>
+            <a href="results.php" onMouseOver="window.status='Результаты тестирования'" id="results_link">Результаты</a>
+		</div> -->
+		<div>
+            <a href="fotoes.php" onMouseOver="window.status='Фотографии'" id="fotoes_link">Фотоальбом</a>
+		</div>
+		<div>
+            <a href="contacts.php" onMouseOver="window.status='Мои контакты'" id="contacts_link">Контакты</a>
+		</div>
+		<div>
+            <a href="book.php" onMouseOver="window.status='Гостевая книга'" id="book_link">Гостевая книга</a>
+            
+		</div>
+		<div>
+            <a href="blog.php" onMouseOver="window.status='Блог'" id="blog_link">Блог</a>
+        </div>
+        <?php 
+        	if (is_adm()) {
+        		$s=<<<__wr
+        		<div class="multimenu">
+			<a href="##"class="amulti" id="admin_link">Админ</a>
+
+			<div class="submenu">
+				<a href="edit_blog.php" onMouseOver="window.status='Блог'" id="edit_blog_link">Редактор блога</a>
+            	<a href="load_file.php" onMouseOver="window.status='Блог'" id="load_file_link">Загрузка сообщений</a>
+            	<a href="show_stats.php" onMouseOver="window.status='Блог'" id="stats_link">Статистика</a>
+            	</div>
+		</div>
+__wr;
+				echo "$s";
+        	}
+         ?>
+		<!-- <div class="multimenu">
+			<a href="##"class="amulti" id="admin_link">Админ</a>
+
+			<div class="submenu">
+				<a href="edit_blog.php" onMouseOver="window.status='Блог'" id="edit_blog_link">Редактор блога</a>
+            	<a href="load_file.php" onMouseOver="window.status='Блог'" id="load_file_link">Загрузка сообщений</a>
+            	<a href="show_stats.php" onMouseOver="window.status='Блог'" id="stats_link">Статистика</a>
+
+            </div>
+		</div> -->
+
+
+		

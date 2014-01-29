@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<script type="text/javascript" src="jquery-1.9.0.min.js">
+	</script>
+	<style type="text/css">
+		html{
+			height: 100%;
+		}
+
+		body{
+			height: 100%;
+			/*overflow:auto;*/
+		}
+
+		#body{
+			height: 100%;
+			max-height: 100%;
+		}
+
+		body{
+			margin: 0;
+			padding: 0;
+		}
+
+		#body{
+			/*border:1px solid red;*/
+			margin: 0;
+			padding: 0;
+			
+		}
+		#s{
+			overflow: auto;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			right:0px; 
+			bottom:0px;
+		}
+
+		#inbody{
+			height: 100%;
+			border:1px solid red;
+		}
+
+		#anim{
+			padding: 10px;
+			margin: 20px;
+			/*height: 100px;*/
+			font-size: 150%;
+			/*border: 1px solid #000;*/
+		}
+	</style>
+	<script>
+	jQuery(document).ready(function($) {
+		$('#btn').click(function (e) {
+			$('#anim')
+			.animate({"height": "hide"}, 300)
+			.text('New text')	
+			.animate({"height" : "show"}, 300);
+		});
+
+		$.expr[':'].block = function (elem, i, meta) {
+			if ($(elem).css('display')==="block")
+				return true;
+			else
+				return false;
+		}
+
+		$('input').trigger('click')
+		
+		$('span:block').each(function(i, event) {
+			//alert($(event).html())
+		});
+	});
+		
+	</script>
+</head>
+<body style="overflow:hidden;">
+	<div id="s">
+	<div id="body">
+		<div id="inbody">
+			sefswefwefwefwefwef	
+			<div id="anim">
+				asda sdsad asd asdasdasdsa
+			</div>
+			<input type="button" value="Anim" id="btn"/>
+			<span>a</span>
+			<span style="display:block">b</span>
+			<span>c</span>
+			<span style="display:block">d</span>
+		</div>
+		
+	</div>	
+	</div>
+</body>
+</html>
+
+
